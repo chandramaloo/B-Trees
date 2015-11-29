@@ -1,0 +1,212 @@
+#include <stdio.h>
+#include "am.h"
+#include "pf.h"
+
+
+#include <math.h>
+
+struct key_id {
+	int value;
+	int recId;
+};
+
+/*struct sort_key_id{
+	inline bool operator ()( const key_id &a, const key_id &b){
+		return a.value < b.value;
+	}
+};*/
+
+
+
+
+
+
+/* Insert to a leaf given that the key is new */
+AM_InsertToLeafNotFound ( pageBuf, value, recId, index )
+char *pageBuf;
+char *value;
+int recId;
+int index;
+
+{
+	int recSize;
+	short null = AM_NULL;
+	int i;
+	AM_LEAFHEADER *header;
+	bcopy ( pageBuf, header, AM_sl );
+	recSize = header->attrLength + AM_ss;
+	/* create space for the new key by pushing keys greater than that to
+								    the right */
+	/*for(i = header->numKeys;i >= index; i--)
+		{bcopy(pageBuf+AM_sl+(i-1)*recSize,pageBuf+AM_sl+i*recSize,recSize);
+	 }*/
+	/* Update the header */
+	header->keyPtr = header->keyPtr + recSize;
+	/* copy the new key */
+	bcopy ( value, pageBuf + AM_sl + ( index - 1 ) *recSize, header->attrLength );
+	/* make the head of list NULL*/
+	bcopy ( ( char * ) &null, pageBuf + AM_sl + ( index - 1 ) *recSize +
+			header->attrLength, AM_ss );
+	/* Now insert as if key were old key */
+	AM_InsertToLeafFound ( pageBuf, recId, index, header );
+	header->numKeys++;
+	bcopy(header,pageBuf,AM_sl);
+}
+
+
+/* Insert into leaf given the fact that the key is old */
+AM_InsertToLeafFound ( pageBuf, recId, index, header )
+char *pageBuf;
+int recId;
+int index;
+AM_LEAFHEADER *header;
+
+{
+	int recSize;
+	short tempPtr;
+	short oldhead;
+	recSize = header->attrLength + AM_ss;
+
+	if ( ( header->freeListPtr ) == 0 ) {
+		header->recIdPtr = header->recIdPtr - AM_si - AM_ss;
+		tempPtr = header->recIdPtr;
+	}
+
+	else {
+		tempPtr = header->freeListPtr;
+		header->numinfreeList--;
+		bcopy ( pageBuf + tempPtr + AM_si, ( char * ) & ( header->freeListPtr ), AM_ss );
+	}
+
+	/* save  the old head of recId list */
+	bcopy ( pageBuf + AM_sl + ( index - 1 ) *recSize + header->attrLength,
+			( char * ) &oldhead, AM_ss );
+	/* Update the head of recId list to the new recid to be added */
+	bcopy ( ( char * )  &tempPtr, pageBuf + AM_sl + ( index - 1 ) *recSize +
+			header->attrLength, AM_ss );
+	/* Copy the recId*/
+	bcopy ( ( char * ) &recId, pageBuf + tempPtr, AM_si );
+	/* make the old head of list the second on list */
+	bcopy ( ( char * ) &oldhead, pageBuf + tempPtr + AM_si, AM_ss );
+}
+
+int AM_Bulk2 ( int fd, int inpLen, struct key_id *inp, int attrLength ) {
+	if ( inpLen <= 0 ) return -1;
+
+	//qsort(inp, inpLen, 2*sizeof(int));
+	int maxkeys = ( PF_PAGE_SIZE - AM_sint - AM_si ) / ( AM_si + attrLength );
+	int  key_no[inpLen];
+	key_no[0] = 0;
+	int i = 1;
+
+	for ( i = 1; i < inpLen; i++ ) {
+		if ( inp[i].value != inp[i - 1].value ) key_no[i] = key_no[i - 1] + 1;
+
+		else key_no[i] = key_no[i - 1];
+	}
+
+	int tot_keys = key_no[inpLen - 1];
+	int key_left = tot_keys;
+	int cur = 0;
+
+	while ( key_left >= 2 * maxkeys ) {
+		int j = cur;
+		int pagenum;
+		char *pageBuf;
+		int errVal = PF_AllocPage ( fd, &pagenum, &pageBuf );
+		AM_Check;
+
+		while ( key_no[j] - key_no[cur] < maxkeys ) {
+			AM_InsertToLeafNotFound ( pageBuf, inp[j].value, inp[j].recId, key_no[j] - key_no[cur] );
+			j++;
+		}
+
+		key_left -= maxkeys;
+		cur += maxkeys;
+	}
+
+	int maxkeys2 = ceil ( key_left / 2.0 );
+
+	while ( key_left > 0 ) {
+		int j = cur;
+		int pagenum;
+		char *pageBuf;
+		int errVal = PF_AllocPage ( fd, &pagenum, &pageBuf );
+		AM_Check;
+
+		while ( key_no[j] - key_no[cur] < maxkeys2 ) {
+			AM_InsertToLeafNotFound ( pageBuf, inp[j].value, inp[j].recId, key_no[j] - key_no[cur] );
+			j++;
+		}
+
+		key_left -= maxkeys2;
+		cur += maxkeys2;
+	}
+
+	return 0;
+}
+
+
+int AM_Bulk1 ( int fd, int inpLen, struct key_id *inp, int *pageNumArr, int *minValArr, int attrLength ) {
+	if ( inpLen <= 0 ) return -1;
+
+	//qsort(inp, inpLen, 2*sizeof(int));
+	int maxkeys = ( PF_PAGE_SIZE - AM_sint - AM_si ) / ( AM_si + attrLength );
+	int  key_no[inpLen];
+	key_no[0] = 0;
+	int i = 1;
+	pageNumArr = (int*)malloc(sizeof(int)*(ceil(inpLen/(maxkeys*1.0))));
+	minValArr = (int*)malloc(sizeof(int)*(ceil(inpLen/(maxkeys*1.0))));
+	for ( i = 1; i < inpLen; i++ ) {
+		if ( inp[i].value != inp[i - 1].value ) key_no[i] = key_no[i - 1] + 1;
+
+		else key_no[i] = key_no[i - 1];
+	}
+	
+	int tot_keys = key_no[inpLen - 1];
+	int key_left = tot_keys;
+	int cur = 0;
+	int pno = 0;
+	while ( key_left >= 2 * maxkeys ) {
+		int j = cur;
+		int pagenum;
+		char *pageBuf;
+		int errVal = PF_AllocPage ( fd, &pagenum, &pageBuf );
+		pageNumArr[pno] = pagenum;
+		minValArr[pno] = inp[cur].value;
+		pno++;
+		AM_Check;
+
+		while ( key_no[j] - key_no[cur] < maxkeys ) {
+			AM_InsertToLeafNotFound ( pageBuf, inp[j].value, inp[j].recId, key_no[j] - key_no[cur] );
+			j++;
+		}
+
+		key_left -= maxkeys;
+		cur += maxkeys;
+	}
+
+	int maxkeys2 = ceil ( key_left / 2.0 );
+
+	while ( key_left > 0 ) {
+		int j = cur;
+		int pagenum;
+		char *pageBuf;
+		int errVal = PF_AllocPage ( fd, &pagenum, &pageBuf );
+		AM_Check;
+
+		while ( key_no[j] - key_no[cur] < maxkeys2 ) {
+			AM_InsertToLeafNotFound ( pageBuf, inp[j].value, inp[j].recId, key_no[j] - key_no[cur] );
+			j++;
+		}
+
+		key_left -= maxkeys2;
+		cur += maxkeys2;
+	}
+	AM_Bulk2(pageNumArr, minValArr);
+	return 0;
+}
+
+
+
+

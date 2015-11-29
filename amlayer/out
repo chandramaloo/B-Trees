@@ -1,0 +1,342 @@
+
+Initializing
+
+Creating index
+
+Opening index
+
+Preparing input
+
+Bulk Loading
+
+Deleting odd number records
+Deleting entry 1  err : 0
+Deleting entry 3  err : 0
+Deleting entry 5  err : 0
+Deleting entry 7  err : 0
+Deleting entry 9  err : 0
+Deleting entry 11  err : 0
+Deleting entry 13  err : 0
+Deleting entry 15  err : 0
+Deleting entry 17  err : 0
+Deleting entry 19  err : 0
+Deleting entry 21  err : 0
+Deleting entry 23  err : 0
+Deleting entry 25  err : 0
+Deleting entry 27  err : 0
+Deleting entry 29  err : 0
+Deleting entry 31  err : 0
+Deleting entry 33  err : 0
+Deleting entry 35  err : 0
+Deleting entry 37  err : 0
+Deleting entry 39  err : 0
+Deleting entry 41  err : 0
+Deleting entry 43  err : 0
+Deleting entry 45  err : 0
+Deleting entry 47  err : 0
+Deleting entry 49  err : 0
+Deleting entry 51  err : 0
+Deleting entry 53  err : 0
+Deleting entry 55  err : 0
+Deleting entry 57  err : 0
+Deleting entry 59  err : 0
+Deleting entry 61  err : 0
+Deleting entry 63  err : 0
+Deleting entry 65  err : 0
+Deleting entry 67  err : 0
+Deleting entry 69  err : 0
+Deleting entry 71  err : 0
+Deleting entry 73  err : 0
+Deleting entry 75  err : 0
+Deleting entry 77  err : 0
+Deleting entry 79  err : 0
+Deleting entry 81  err : 0
+Deleting entry 83  err : 0
+Deleting entry 85  err : 0
+Deleting entry 87  err : 0
+Deleting entry 89  err : 0
+Deleting entry 91  err : 0
+Deleting entry 93  err : 0
+Deleting entry 95  err : 0
+Deleting entry 97  err : 0
+Deleting entry 99  err : 0
+Deleting entry 101  err : 0
+Deleting entry 103  err : 0
+Deleting entry 105  err : 0
+Deleting entry 107  err : 0
+Deleting entry 109  err : 0
+Deleting entry 111  err : 0
+Deleting entry 113  err : 0
+Deleting entry 115  err : 0
+Deleting entry 117  err : 0
+Deleting entry 119  err : 0
+Deleting entry 121  err : 0
+Deleting entry 123  err : 0
+Deleting entry 125  err : 0
+Deleting entry 127  err : 0
+Deleting entry 129  err : 0
+Deleting entry 131  err : 0
+Deleting entry 133  err : 0
+Deleting entry 135  err : 0
+Deleting entry 137  err : 0
+Deleting entry 139  err : 0
+Deleting entry 141  err : 0
+Deleting entry 143  err : 0
+Deleting entry 145  err : 0
+Deleting entry 147  err : 0
+Deleting entry 149  err : 0
+Deleting entry 151  err : 0
+Deleting entry 153  err : 0
+Deleting entry 155  err : 0
+Deleting entry 157  err : 0
+Deleting entry 159  err : 0
+Deleting entry 161  err : 0
+Deleting entry 163  err : 0
+Deleting entry 165  err : 0
+Deleting entry 167  err : 0
+Deleting entry 169  err : 0
+Deleting entry 171  err : 0
+Deleting entry 173  err : 0
+Deleting entry 175  err : 0
+Deleting entry 177  err : 0
+Deleting entry 179  err : 0
+Deleting entry 181  err : 0
+Deleting entry 183  err : 0
+Deleting entry 185  err : 0
+Deleting entry 187  err : 0
+Deleting entry 189  err : 0
+Deleting entry 191  err : 0
+Deleting entry 193  err : 0
+Deleting entry 195  err : 0
+Deleting entry 197  err : 0
+Deleting entry 199  err : 0
+
+Modifying Entry:
+Modified entry 198  err : 0
+
+Print Entire Tree:
+GETTING PAGE = 3
+GETTING PAGE = 0
+PAGENUM = 0
+ATTRIBUTE is 0
+RECID is 0
+ATTRIBUTE is 2
+RECID is 2
+ATTRIBUTE is 4
+RECID is 4
+ATTRIBUTE is 6
+RECID is 6
+ATTRIBUTE is 8
+RECID is 8
+ATTRIBUTE is 10
+RECID is 10
+ATTRIBUTE is 12
+RECID is 12
+ATTRIBUTE is 14
+RECID is 14
+ATTRIBUTE is 16
+RECID is 16
+ATTRIBUTE is 18
+RECID is 18
+ATTRIBUTE is 20
+RECID is 20
+ATTRIBUTE is 22
+RECID is 22
+ATTRIBUTE is 24
+RECID is 24
+ATTRIBUTE is 26
+RECID is 26
+ATTRIBUTE is 28
+RECID is 28
+ATTRIBUTE is 30
+RECID is 30
+ATTRIBUTE is 32
+RECID is 32
+ATTRIBUTE is 34
+RECID is 34
+ATTRIBUTE is 36
+RECID is 36
+ATTRIBUTE is 38
+RECID is 38
+ATTRIBUTE is 40
+RECID is 40
+ATTRIBUTE is 42
+RECID is 42
+ATTRIBUTE is 44
+RECID is 44
+ATTRIBUTE is 46
+RECID is 46
+ATTRIBUTE is 48
+RECID is 48
+ATTRIBUTE is 50
+RECID is 50
+ATTRIBUTE is 52
+RECID is 52
+ATTRIBUTE is 54
+RECID is 54
+ATTRIBUTE is 56
+RECID is 56
+ATTRIBUTE is 58
+RECID is 58
+ATTRIBUTE is 60
+RECID is 60
+ATTRIBUTE is 62
+RECID is 62
+ATTRIBUTE is 64
+RECID is 64
+ATTRIBUTE is 66
+RECID is 66
+ATTRIBUTE is 68
+RECID is 68
+ATTRIBUTE is 70
+RECID is 70
+GETTING PAGE = 1
+PAGENUM = 1
+ATTRIBUTE is 72
+RECID is 72
+ATTRIBUTE is 74
+RECID is 74
+ATTRIBUTE is 76
+RECID is 76
+ATTRIBUTE is 78
+RECID is 78
+ATTRIBUTE is 80
+RECID is 80
+ATTRIBUTE is 82
+RECID is 82
+ATTRIBUTE is 84
+RECID is 84
+ATTRIBUTE is 86
+RECID is 86
+ATTRIBUTE is 88
+RECID is 88
+ATTRIBUTE is 90
+RECID is 90
+ATTRIBUTE is 92
+RECID is 92
+ATTRIBUTE is 94
+RECID is 94
+ATTRIBUTE is 96
+RECID is 96
+ATTRIBUTE is 98
+RECID is 98
+ATTRIBUTE is 100
+RECID is 100
+ATTRIBUTE is 102
+RECID is 102
+ATTRIBUTE is 104
+RECID is 104
+ATTRIBUTE is 106
+RECID is 106
+ATTRIBUTE is 108
+RECID is 108
+ATTRIBUTE is 110
+RECID is 110
+ATTRIBUTE is 112
+RECID is 112
+ATTRIBUTE is 114
+RECID is 114
+ATTRIBUTE is 116
+RECID is 116
+ATTRIBUTE is 118
+RECID is 118
+ATTRIBUTE is 120
+RECID is 120
+ATTRIBUTE is 122
+RECID is 122
+ATTRIBUTE is 124
+RECID is 124
+ATTRIBUTE is 126
+RECID is 126
+ATTRIBUTE is 128
+RECID is 128
+ATTRIBUTE is 130
+RECID is 130
+ATTRIBUTE is 132
+RECID is 132
+ATTRIBUTE is 134
+RECID is 134
+GETTING PAGE = 2
+PAGENUM = 2
+ATTRIBUTE is 136
+RECID is 136
+ATTRIBUTE is 138
+RECID is 138
+ATTRIBUTE is 140
+RECID is 140
+ATTRIBUTE is 142
+RECID is 142
+ATTRIBUTE is 144
+RECID is 144
+ATTRIBUTE is 146
+RECID is 146
+ATTRIBUTE is 148
+RECID is 148
+ATTRIBUTE is 150
+RECID is 150
+ATTRIBUTE is 152
+RECID is 152
+ATTRIBUTE is 154
+RECID is 154
+ATTRIBUTE is 156
+RECID is 156
+ATTRIBUTE is 158
+RECID is 158
+ATTRIBUTE is 160
+RECID is 160
+ATTRIBUTE is 162
+RECID is 162
+ATTRIBUTE is 164
+RECID is 164
+ATTRIBUTE is 166
+RECID is 166
+ATTRIBUTE is 168
+RECID is 168
+ATTRIBUTE is 170
+RECID is 170
+ATTRIBUTE is 172
+RECID is 172
+ATTRIBUTE is 174
+RECID is 174
+ATTRIBUTE is 176
+RECID is 176
+ATTRIBUTE is 178
+RECID is 178
+ATTRIBUTE is 180
+RECID is 180
+ATTRIBUTE is 182
+RECID is 182
+ATTRIBUTE is 184
+RECID is 184
+ATTRIBUTE is 186
+RECID is 186
+ATTRIBUTE is 188
+RECID is 188
+ATTRIBUTE is 190
+RECID is 190
+ATTRIBUTE is 192
+RECID is 192
+ATTRIBUTE is 194
+RECID is 194
+ATTRIBUTE is 196
+RECID is 196
+ATTRIBUTE is 198
+RECID is 300
+PAGENUM = 3PAGETYPE i
+NUMKEYS 2
+MAXKEYS 72
+ATTRLENGTH 4
+FIRSTPAGE is 0
+ATTRIBUTE is 72
+NEXTPAGE is 1
+ATTRIBUTE is 136
+NEXTPAGE is 2
+
+Search Entry:
+Entry: 180 PageNum: 2 Index: 23 Status: 1
+
+Closing Down
+
+****Error -11 ******
+
+Test done!
